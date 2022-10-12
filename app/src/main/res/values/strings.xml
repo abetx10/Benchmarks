@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Benchmarks</string>
+    <string name="collections">Collections</string>
+    <string name="maps">Maps</string>
+    <string name="please_enter">please enter collection size and number of elements to compare</string>
+    <string name="collection_size">collection size</string>
+    <string name="elements_amount">elements amount</string>
+    <string name="calculate">calculate</string>
+    <string name="start">Start</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+<!--    <string-array name="title">-->
+<!--        <item>Adding in the beginning</item>-->
+<!--        <item>Adding in the middle</item>-->
+<!--        <item>Adding in the end</item>-->
+<!--        <item>Search by value</item>-->
+<!--        <item>Removing in the beginning</item>-->
+<!--        <item>Removing in the middle</item>-->
+<!--        <item>Removing in the end</item>-->
+<!--    </string-array>-->
+
+    <string name="title_1">Adding in the beginning</string>
+    <string name="title_2">Adding in the middle</string>
+    <string name="title_3">Adding in the end</string>
+    <string name="title_4">Search by value</string>
+    <string name="title_5">Removing in the beginning</string>
+    <string name="title_6">Removing in the middle</string>
+    <string name="title_7">Removing in the end</string>
+
+<!--    <string-array name="startArrayListData">-->
+<!--        <item>0</item>-->
+<!--        <item>0</item>-->
+<!--        <item>0</item>-->
+<!--        <item>0</item>-->
+<!--        <item>0</item>-->
+<!--        <item>0</item>-->
+<!--        <item>0</item>-->
+<!--    </string-array>-->
+
+    <string name="startArrayListData">0</string>
+
+    <string name="state_progress">progress</string>
+    <string name="state_ready">ready</string>
+
+    <string name="first_type">ArrayList</string>
+    <string name="second_type">LinkedList</string>
+    <string name="third_type">CopyOnWrite</string>
+
+</resources>
