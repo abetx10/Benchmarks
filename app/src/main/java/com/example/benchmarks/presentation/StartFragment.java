@@ -1,28 +1,26 @@
-package com.example.benchmarks;
+package com.example.benchmarks.presentation;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import adapter.FragmentAdapter;
+import com.example.benchmarks.R;
+import com.google.android.material.tabs.TabLayout;
 
-
-public class CollectionsFragment extends Fragment implements View.OnClickListener {
-//    public final static String COLL_FRAG_TAG = "collFrag";
+public class StartFragment extends Fragment implements View.OnClickListener {
     public final static String NUMBER = "number";
 
     Button mCalculateCollBt;
     EditText mCollectionSizeEd;
+    TabLayout mTabLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,6 +32,7 @@ public class CollectionsFragment extends Fragment implements View.OnClickListene
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mTabLayout = view.findViewById(R.id.tabLayout);
         mCollectionSizeEd = view.findViewById(R.id.ed_collectionSize);
         mCalculateCollBt = view.findViewById(R.id.bt_calculateCollections);
         mCalculateCollBt.setOnClickListener(this);
@@ -43,15 +42,25 @@ public class CollectionsFragment extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
 //        mCollectionSizeEd.setText("100");
+        if (MainFragment.tabPosition == 0) {
+//            Toast.makeText(requireActivity(), "1", Toast.LENGTH_LONG).show();
+            Fragment fragment = new CollectionsTableFragment();
+            goFromStartToSecondFragment(fragment);
+        } else {
+//            Toast.makeText(requireActivity(), "2", Toast.LENGTH_LONG).show();
+            Fragment fragment = new MapsTableFragment();
+            goFromStartToSecondFragment(fragment);
+        }
+    }
 
-        Fragment fragment = new CollectionsTableFragment();
+    public void goFromStartToSecondFragment(Fragment fragment){
         Bundle args = new Bundle();
         args.putString(NUMBER, mCollectionSizeEd.getText().toString());
         fragment.setArguments(args);
 
         getChildFragmentManager()
                 .beginTransaction()
-                .replace(R.id.cl_fragmentCollection, fragment)
+                .replace(R.id.cl_fragmentStart, fragment)
                 .addToBackStack(null)
                 .commit();
         mCalculateCollBt.setVisibility(View.GONE);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".CollectionsTableFragment">
+    tools:context=".presentation.CollectionsTableFragment">
 
     <RelativeLayout
         android:id="@+id/rl_second_item"
@@ -24,6 +24,13 @@
             android:gravity="center"
             android:orientation="vertical"
             android:padding="15dp">
+
+            <ProgressBar
+                android:id="@+id/pb_linked"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_item_linked"
@@ -60,6 +67,13 @@
             android:gravity="center"
             android:orientation="vertical"
             android:padding="15dp">
+
+            <ProgressBar
+                android:id="@+id/pb_copy"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_item_copyOn"
@@ -100,7 +114,7 @@
             android:padding="15dp">
 
             <ProgressBar
-                android:id="@+id/pb_item1"
+                android:id="@+id/pb_array"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

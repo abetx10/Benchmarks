@@ -1,7 +1,8 @@
-package com.example.benchmarks;
+package com.example.benchmarks.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.benchmarks.R;
 
 public class MainActivity extends AppCompatActivity {
 

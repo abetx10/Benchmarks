@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/ed_enterNumber"
+            android:id="@+id/ed_enterNumberMaps"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -30,10 +30,10 @@
         </com.rengwuxian.materialedittext.MaterialEditText>
 
         <Button
-            android:id="@+id/bt_startCalc"
+            android:id="@+id/bt_startCalcMaps"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/start" />
+            android:text="mapsFrag" />
 
     </LinearLayout>
 
@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" >
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_collections"
+            android:id="@+id/rv_collectionsMaps"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
