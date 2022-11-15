@@ -9,7 +9,7 @@ public class ArrayListAddingEndUseCase {
     public Observable<Integer> addingEnd = (Observable<Integer>) Observable.defer(() -> {
         ArrayList<Integer> numbersCopy = numbers;
         long startTime = System.currentTimeMillis();
-        numbersCopy.add(0, DATA);
+        numbersCopy.add(numbersCopy.size() -1, DATA);
         return Observable.just(Math.toIntExact(System.currentTimeMillis() - startTime));
     });
 }

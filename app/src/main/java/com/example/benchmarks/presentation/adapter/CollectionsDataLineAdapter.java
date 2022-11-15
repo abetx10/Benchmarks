@@ -7,21 +7,24 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.benchmarks.R;
-import com.example.benchmarks.data.TimeDataList;
-import com.example.benchmarks.data.TitleData;
+import com.example.benchmarks.domain.models.TimeDataList;
+import com.example.benchmarks.domain.models.TitleData;
+import com.example.benchmarks.domain.operation.Operation;
 
 import java.util.ArrayList;
 
 public class CollectionsDataLineAdapter extends RecyclerView.Adapter<CollectionsDataLineAdapter.CollectionsViewHolder> {
-    ArrayList<TimeDataList> timeDataList;
+//    ArrayList<TimeDataList> timeDataList;
+    MutableLiveData<ArrayList<Operation>> arrayListData;
     ArrayList<TitleData> titleDataArrayList;
     Context context;
 
-    public CollectionsDataLineAdapter(Context context, ArrayList<TimeDataList> timeDataList, ArrayList<TitleData> titleDataArrayList) {
+    public CollectionsDataLineAdapter(Context context, MutableLiveData<ArrayList<Operation>> arrayListData, ArrayList<TitleData> titleDataArrayList) {
         this.context = context;
-        this.timeDataList = timeDataList;
+        this.arrayListData = arrayListData;
         this.titleDataArrayList = titleDataArrayList;
     }
 
@@ -41,7 +44,7 @@ public class CollectionsDataLineAdapter extends RecyclerView.Adapter<Collections
 
     @Override
     public void onBindViewHolder(@NonNull CollectionsViewHolder holder, int position) {
-        TimeDataList timeDataList = this.timeDataList.get(position);
+        TimeDataList timeDataList = this.arrayListData.(position);
         TitleData titleData = titleDataArrayList.get(position);
         holder.titleTv.setText(titleData.title);
 

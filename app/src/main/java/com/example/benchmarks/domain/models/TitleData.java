@@ -1,4 +1,4 @@
-package com.example.benchmarks.data;
+package com.example.benchmarks.domain.models;
 
 public class TitleData {
     public String title;
