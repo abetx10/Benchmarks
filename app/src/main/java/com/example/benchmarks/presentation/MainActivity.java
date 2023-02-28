@@ -6,8 +6,7 @@ import com.example.benchmarks.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    //    Button mCalculateBt;
-    CollectionsTableFragment collTableFragment = new CollectionsTableFragment();
+    CollectionsFragment collTableFragment = new CollectionsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +14,3 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 }
-
-
-
-

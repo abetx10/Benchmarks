@@ -17,7 +17,6 @@ import com.example.benchmarks.presentation.adapter.FragmentAdapter;
 
 public class MainFragment extends Fragment {
     ViewPager2 mViewPager;
-    FragmentAdapter mAdapter;
     TabLayout mTabLayout;
     static Integer tabPosition;
 

@@ -41,13 +41,10 @@ public class StartFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-//        mCollectionSizeEd.setText("100");
         if (MainFragment.tabPosition == 0) {
-//            Toast.makeText(requireActivity(), "1", Toast.LENGTH_LONG).show();
-            Fragment fragment = new CollectionsTableFragment();
+            Fragment fragment = new CollectionsFragment();
             goFromStartToSecondFragment(fragment);
         } else {
-//            Toast.makeText(requireActivity(), "2", Toast.LENGTH_LONG).show();
             Fragment fragment = new MapsTableFragment();
             goFromStartToSecondFragment(fragment);
         }

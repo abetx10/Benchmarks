@@ -16,18 +16,6 @@ public class FragmentAdapter extends FragmentStateAdapter {
         super(fragmentManager, lifecycle);
     }
 
-//    @NonNull
-//    @Override
-//    public Fragment createFragment(int position) {
-//        switch (position){
-//            case 0:
-//            case 1:
-//                return new StartFragment();
-//            default:
-//                return null;
-//        }
-//    }
-
     @NonNull
     @Override
     public Fragment createFragment(int position) {

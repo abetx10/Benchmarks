@@ -1,17 +1,17 @@
 package com.example.benchmarks.domain.operation;
 
-import com.example.benchmarks.domain.collection.CustomCollection;
-import com.example.benchmarks.domain.position.Position;
+import android.util.Log;
+import java.util.List;
 import io.reactivex.rxjava3.core.Observable;
 
-public abstract class Operation {
-CustomCollection customCollection;
-Position position;
+public class Operation {
+    private static final Integer ELEMENT = 0;
+    private List<Integer> list;
+    private OperationType operationType;
 
-
-    public Operation(CustomCollection customCollection, Position position) {
-        this.customCollection = customCollection;
-        this.position = position;
+    public Operation(List<Integer> list, OperationType operationType) {
+        this.list = list;
+        this.operationType = operationType;
     }
 
     public Observable<Integer> executeAndReturnUptime() {
@@ -21,7 +21,38 @@ Position position;
             return Observable.just(Math.toIntExact(System.currentTimeMillis() - startTime));
         });
     }
-    abstract void execute();
+
+    public void execute() {
+        Log.d("Operation", "Executing operation on thread " + Thread.currentThread().getName());
+        switch (operationType) {
+            case ADD_START:
+                list.add(0, ELEMENT);
+                break;
+            case ADD_MIDDLE:
+                list.add(list.size() / 2, ELEMENT);
+                break;
+            case ADD_END:
+                list.add(ELEMENT);
+                break;
+            case REMOVE_START:
+                list.remove(0);
+                break;
+            case REMOVE_MIDDLE:
+                list.remove(list.size() / 2);
+                break;
+            case REMOVE_END:
+                list.remove(list.size() - 1);
+                break;
+            case SEARCH:
+                list.contains(ELEMENT);
+                break;
+        }
+    }
 }
 
-
+//    ok no rx
+//    public int executeAndReturnUptime() {
+//        long startTime = System.currentTimeMillis();
+//        execute();
+//        return Math.toIntExact(System.currentTimeMillis() - startTime);
+//    }
