@@ -56,6 +56,12 @@ public class CollectionsFragment extends Fragment implements View.OnClickListene
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        collectionsVm.setUpdateListCallback(null);
+    }
+
+    @Override
     public void onUpdateList(ArrayList<OperationItem> updateOperationItemsList) {
         collDataAdapter.updateList(updateOperationItemsList);
     }

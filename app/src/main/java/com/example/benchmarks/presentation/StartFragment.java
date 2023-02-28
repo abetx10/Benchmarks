@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.benchmarks.R;
 import com.google.android.material.tabs.TabLayout;
@@ -51,9 +52,15 @@ public class StartFragment extends Fragment implements View.OnClickListener {
     }
 
     public void goFromStartToSecondFragment(Fragment fragment){
-        Bundle args = new Bundle();
-        args.putString(NUMBER, mCollectionSizeEd.getText().toString());
-        fragment.setArguments(args);
+        String input = mCollectionSizeEd.getText().toString();
+        if (input.matches("[0-9]+")) {
+            Bundle args = new Bundle();
+            args.putString(NUMBER, input);
+            fragment.setArguments(args);
+        } else {
+            Toast.makeText(getContext(), "Please use only numbers", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         getChildFragmentManager()
                 .beginTransaction()

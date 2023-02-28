@@ -1,5 +1,6 @@
 package com.example.benchmarks.data;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FillListFactory {
@@ -12,10 +13,7 @@ public class FillListFactory {
     }
 
     public static List<Integer> getFilledList(int num) {
-        List<Integer> filledList = new ArrayList<Integer>(num);
-        for (int i = 0; i < num; i++) {
-            filledList.add(DATA);
-        }
-        return filledList;
+        return Collections.nCopies(num, DATA);
+
     }
 }

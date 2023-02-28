@@ -2,7 +2,7 @@ package com.example.benchmarks.domain.models;
 
 public class OperationItem {
     public String time = "N/A";
-    public String statusReady = "ready";
+    public OperationStatus statusReady = OperationStatus.READY;
     public String title;
 
     public OperationItem(String titleId) {

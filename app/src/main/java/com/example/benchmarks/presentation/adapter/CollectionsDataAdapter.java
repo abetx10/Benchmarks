@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.benchmarks.R;
 import com.example.benchmarks.domain.models.OperationItem;
+import com.example.benchmarks.domain.models.OperationStatus;
 import com.example.benchmarks.presentation.OperationItemDiffCallback;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class CollectionsDataAdapter extends RecyclerView.Adapter<CollectionsData
     public void onBindViewHolder(@NonNull CollectionsViewHolder holder, int position) {
         OperationItem operationItem = operationItemsList.get(position);
         holder.titleTv.setText(operationItem.title);
-        if (operationItem.statusReady.equals("progress")) {
+        if (operationItem.statusReady == OperationStatus.NOT_READY) {
             holder.itemPb.setVisibility(View.VISIBLE);
         } else {
             holder.itemPb.setVisibility(View.GONE);

@@ -10,6 +10,7 @@ import com.example.benchmarks.data.CollectionOperationsFactory;
 import com.example.benchmarks.data.FillListFactory;
 import com.example.benchmarks.data.OperationItemsFactory;
 import com.example.benchmarks.domain.models.OperationItem;
+import com.example.benchmarks.domain.models.OperationStatus;
 import com.example.benchmarks.domain.operation.Operation;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class CollectionsViewModel extends AndroidViewModel {
         for (int i = 0; i < operationItemsList.size(); i++) {
             OperationItem operationItem = operationItemsList.get(i);
             updatedList.add(new OperationItem(operationItem.getTitle()));
-            updatedList.get(i).statusReady = getApplication().getString(R.string.state_progress);
+            updatedList.get(i).statusReady = OperationStatus.NOT_READY;
         }
         updateOperationItemsList.addAll(updatedList);
 
@@ -64,13 +65,11 @@ public class CollectionsViewModel extends AndroidViewModel {
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(time -> {
                                     updateOperationItemsList.get(finalI).time = String.valueOf(time);
-                                    updateOperationItemsList.get(finalI).statusReady = getApplication().getString(R.string.state_ready);
+                                    updateOperationItemsList.get(finalI).statusReady = OperationStatus.READY;
                                     updateListCallback.onUpdateList(updateOperationItemsList);
 //                                    Log.d("updateO", "Index: " + finalI + " Value: " + updateOperationItemsList.get(finalI) + "Executing operation on thread " + Thread.currentThread().getName());
 //                                    Log.d("updateO", "Index: " + finalI + " Value: " + updateOperationItemsList.get(finalI).statusReady);
 //                                    Log.d("updateO", "Index: " + finalI + " Value: " + updateOperationItemsList.get(finalI).time);
-
-
                                 });
                     }
                 });

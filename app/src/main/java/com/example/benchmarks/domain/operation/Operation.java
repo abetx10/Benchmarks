@@ -1,6 +1,8 @@
 package com.example.benchmarks.domain.operation;
 
 import android.util.Log;
+
+import java.util.LinkedList;
 import java.util.List;
 import io.reactivex.rxjava3.core.Observable;
 
@@ -26,22 +28,38 @@ public class Operation {
         Log.d("Operation", "Executing operation on thread " + Thread.currentThread().getName());
         switch (operationType) {
             case ADD_START:
-                list.add(0, ELEMENT);
+                if (list instanceof LinkedList) {
+                    ((LinkedList) list).addFirst(ELEMENT);
+                } else {
+                    list.add(0, ELEMENT);
+                }
                 break;
             case ADD_MIDDLE:
                 list.add(list.size() / 2, ELEMENT);
                 break;
             case ADD_END:
-                list.add(ELEMENT);
+                if (list instanceof LinkedList) {
+                    ((LinkedList) list).addLast(ELEMENT);
+                } else {
+                    list.add(ELEMENT);
+                }
                 break;
             case REMOVE_START:
-                list.remove(0);
+                if (list instanceof LinkedList) {
+                    ((LinkedList) list).removeFirst();
+                } else {
+                    list.remove(0);
+                }
                 break;
             case REMOVE_MIDDLE:
                 list.remove(list.size() / 2);
                 break;
             case REMOVE_END:
-                list.remove(list.size() - 1);
+                if (list instanceof LinkedList) {
+                    ((LinkedList) list).removeLast();
+                } else {
+                    list.remove(list.size() - 1);
+                }
                 break;
             case SEARCH:
                 list.contains(ELEMENT);
