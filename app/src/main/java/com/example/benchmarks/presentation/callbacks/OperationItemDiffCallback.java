@@ -1,4 +1,4 @@
-package com.example.benchmarks.presentation;
+package com.example.benchmarks.presentation.callbacks;
 
 import androidx.recyclerview.widget.DiffUtil;
 

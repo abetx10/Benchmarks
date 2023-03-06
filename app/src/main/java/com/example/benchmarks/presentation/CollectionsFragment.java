@@ -3,22 +3,21 @@ package com.example.benchmarks.presentation;
 import static com.example.benchmarks.presentation.StartFragment.NUMBER;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.benchmarks.R;
+import com.example.benchmarks.data.application.MyApplication;
 import com.example.benchmarks.domain.models.OperationItem;
 import com.example.benchmarks.presentation.adapter.CollectionsDataAdapter;
-import com.example.benchmarks.R;
+import com.example.benchmarks.presentation.callbacks.UpdateListCallback;
 
 import java.util.ArrayList;
 
@@ -35,7 +34,9 @@ public class CollectionsFragment extends Fragment implements View.OnClickListene
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_collections_table, container, false);
 
-        collectionsVm = new ViewModelProvider(this).get(CollectionsViewModel.class);
+        collectionsVm = ((MyApplication) requireActivity().getApplication()).getCollectionsComponent().getCollectionsViewModel();
+//ok no dagger
+//        collectionsVm = new ViewModelProvider(this).get(CollectionsViewModel.class);
 
         String numbers = this.getArguments().getString(NUMBER);
         collectionsVm.getOperationItemList();
@@ -72,7 +73,7 @@ public class CollectionsFragment extends Fragment implements View.OnClickListene
 
         collectionsVm.startProgressBar();
         collDataAdapter.updateList(collectionsVm.updateOperationItemsList);
+        collectionsVm.setUpdateListCallback((UpdateListCallback) this);
         collectionsVm.updateData(num);
-        collectionsVm.setUpdateListCallback(this);
     }
 }

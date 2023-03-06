@@ -6,35 +6,36 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.example.benchmarks.R;
-import com.example.benchmarks.data.CollectionOperationsFactory;
-import com.example.benchmarks.data.FillListFactory;
 import com.example.benchmarks.data.OperationItemsFactory;
+import com.example.benchmarks.data.UpdateDataLogic;
 import com.example.benchmarks.domain.models.OperationItem;
 import com.example.benchmarks.domain.models.OperationStatus;
-import com.example.benchmarks.domain.operation.Operation;
+import com.example.benchmarks.presentation.callbacks.UpdateListCallback;
 
 import java.util.ArrayList;
 
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
-
+import javax.inject.Inject;
 
 public class CollectionsViewModel extends AndroidViewModel {
 
     OperationItemsFactory operationItemsFactory = new OperationItemsFactory();
     public ArrayList<OperationItem> operationItemsList = new ArrayList<>();
     public ArrayList<OperationItem> updateOperationItemsList = new ArrayList<>();
-    private UpdateListCallback updateListCallback;
-//    public MutableLiveData<ArrayList<OperationItem>> operationItemsList = new MutableLiveData<>();
-//    public MutableLiveData<Integer> itemChangedPosition = new MutableLiveData<Integer>();
+    public UpdateListCallback updateListCallback;
+    private UpdateDataLogic updateDataLogic;
 
     public void setUpdateListCallback(UpdateListCallback updateListCallback) {
         this.updateListCallback = updateListCallback;
     }
 
-    public CollectionsViewModel(@NonNull Application application) {
+//    public CollectionsViewModel(@NonNull Application application) {
+//        super(application);
+//    }
+
+    @Inject
+    public CollectionsViewModel(@NonNull Application application, UpdateDataLogic updateDataLogic) {
         super(application);
+        this.updateDataLogic = updateDataLogic;
     }
 
     public void getOperationItemList() {
@@ -53,28 +54,33 @@ public class CollectionsViewModel extends AndroidViewModel {
     }
 
     public void updateData(Integer num) {
-        Observable.fromCallable(() -> new CollectionOperationsFactory().getOperations(FillListFactory.getFilledList(num)))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(operations -> {
-                    for (int i = 0; i < updateOperationItemsList.size(); i++) {
-                        Operation operation = operations.get(i);
-                        int finalI = i;
-                        operation.executeAndReturnUptime()
-                                .subscribeOn(Schedulers.computation())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(time -> {
-                                    updateOperationItemsList.get(finalI).time = String.valueOf(time);
-                                    updateOperationItemsList.get(finalI).statusReady = OperationStatus.READY;
-                                    updateListCallback.onUpdateList(updateOperationItemsList);
+        updateDataLogic.updateData(this, num);
+    }
+}
+
+//    public void updateData(Integer num) {
+//        Observable.fromCallable(() -> new CollectionOperationsFactory().getOperations(FillListFactory.getFilledList(num)))
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(operations -> {
+//                    for (int i = 0; i < updateOperationItemsList.size(); i++) {
+//                        Operation operation = operations.get(i);
+//                        int finalI = i;
+//                        operation.executeAndReturnUptime()
+//                                .subscribeOn(Schedulers.computation())
+//                                .observeOn(AndroidSchedulers.mainThread())
+//                                .subscribe(time -> {
+//                                    updateOperationItemsList.get(finalI).time = String.valueOf(time);
+//                                    updateOperationItemsList.get(finalI).statusReady = OperationStatus.READY;
+//                                    updateListCallback.onUpdateList(updateOperationItemsList);
 //                                    Log.d("updateO", "Index: " + finalI + " Value: " + updateOperationItemsList.get(finalI) + "Executing operation on thread " + Thread.currentThread().getName());
 //                                    Log.d("updateO", "Index: " + finalI + " Value: " + updateOperationItemsList.get(finalI).statusReady);
 //                                    Log.d("updateO", "Index: " + finalI + " Value: " + updateOperationItemsList.get(finalI).time);
-                                });
-                    }
-                });
-    }
-}
+//                                });
+//                    }
+//                });
+//    }
+
 
 //    private void updateListOnMainThread(ArrayList<OperationItem> updateOperationItemsList) {
 //        Handler mainHandler = new Handler(Looper.getMainLooper());

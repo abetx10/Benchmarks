@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.benchmarks.R;
 import com.example.benchmarks.domain.models.OperationItem;
 import com.example.benchmarks.domain.models.OperationStatus;
-import com.example.benchmarks.presentation.OperationItemDiffCallback;
+import com.example.benchmarks.presentation.callbacks.OperationItemDiffCallback;
 
 import java.util.ArrayList;
 
