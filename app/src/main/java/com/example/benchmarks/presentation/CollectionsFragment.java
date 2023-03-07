@@ -26,6 +26,8 @@ public class CollectionsFragment extends Fragment implements View.OnClickListene
     RecyclerView recyclerView;
     EditText mEnterNumberEd;
     Button mStartCalcBt;
+    private boolean mStopRequested = false;
+    private boolean mStopActivate = false;
     CollectionsDataAdapter collDataAdapter;
     private CollectionsViewModel collectionsVm;
 
@@ -69,11 +71,21 @@ public class CollectionsFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        Integer num = Integer.parseInt(mEnterNumberEd.getText().toString());
+        if (!mStopActivate) {
+            mStartCalcBt.setText(R.string.stop);
+            mStartCalcBt.setBackgroundColor(getResources().getColor(R.color.black));
+            mStopActivate = true;
 
-        collectionsVm.startProgressBar();
-        collDataAdapter.updateList(collectionsVm.updateOperationItemsList);
-        collectionsVm.setUpdateListCallback((UpdateListCallback) this);
-        collectionsVm.updateData(num);
+            Integer num = Integer.parseInt(mEnterNumberEd.getText().toString());
+
+            collectionsVm.startProgressBar();
+            collDataAdapter.updateList(collectionsVm.updateOperationItemsList);
+            collectionsVm.setUpdateListCallback((UpdateListCallback) this);
+            collectionsVm.updateData(num, mStopRequested);
+        } else {
+            mStopRequested = true;
+            mStartCalcBt.setText(R.string.start);
+            mStartCalcBt.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        }
     }
 }

@@ -53,8 +53,8 @@ public class CollectionsViewModel extends AndroidViewModel {
 
     }
 
-    public void updateData(Integer num) {
-        updateDataLogic.updateData(this, num);
+    public void updateData(Integer num, boolean stopRequested) {
+        updateDataLogic.updateData(this, num, stopRequested);
     }
 }
 

@@ -33,7 +33,7 @@
             android:id="@+id/bt_startCalcMaps"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="mapsFrag" />
+            android:text="@string/start" />
 
     </LinearLayout>
 

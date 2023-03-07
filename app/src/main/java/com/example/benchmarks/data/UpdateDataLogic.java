@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class UpdateDataLogic {
-    public void updateData(CollectionsViewModel collectionsViewModel, Integer num) {
+    public void updateData(CollectionsViewModel collectionsViewModel, Integer num, boolean stopRequested) {
         Observable.fromCallable(() -> new CollectionOperationsFactory().getOperations(FillListFactory.getFilledList(num)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -23,7 +23,9 @@ public class UpdateDataLogic {
                                 .subscribe(time -> {
                                     collectionsViewModel.updateOperationItemsList.get(finalI).time = String.valueOf(time);
                                     collectionsViewModel.updateOperationItemsList.get(finalI).statusReady = OperationStatus.READY;
-                                    collectionsViewModel.updateListCallback.onUpdateList(collectionsViewModel.updateOperationItemsList);
+                                    if (!stopRequested) {
+                                        collectionsViewModel.updateListCallback.onUpdateList(collectionsViewModel.updateOperationItemsList);
+                                    }
                                 });
                     }
                 });
