@@ -18,29 +18,14 @@ import com.example.benchmarks.presentation.callbacks.OperationItemDiffCallback;
 
 import java.util.ArrayList;
 
-public class CollectionsDataAdapter extends RecyclerView.Adapter<CollectionsDataAdapter.CollectionsViewHolder> {
-
+public class MapsDataAdapter extends RecyclerView.Adapter<MapsDataAdapter.MapViewHolder> {
     private ArrayList<OperationItem> operationItemsList;
     Context context;
 
-    public CollectionsDataAdapter(Context context, ArrayList<OperationItem> operationItemsList) {
+    public MapsDataAdapter(Context context, ArrayList<OperationItem> operationItemsList) {
         this.context = context;
         this.operationItemsList = operationItemsList;
     }
-
-//    public void updateList(ArrayList<OperationItem> updateOperationItemsList) {
-//        DiffUtil.Callback diffCallback = new OperationItemDiffCallback(operationItemsList, updateOperationItemsList);
-//        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
-//        ArrayList<OperationItem> currentList = operationItemsList;
-//        ArrayList<OperationItem> updatedList = updateOperationItemsList;
-//        for (int i = 0; i < updateOperationItemsList.size(); i++) {
-//            Log.d("updateO", "Index: " + i + " Value: " + updateOperationItemsList.get(i).statusReady);
-//            Log.d("updateO", "Index: " + i + " Value: " + updateOperationItemsList.get(i).time);
-//        }
-//        currentList.clear();
-//        currentList.addAll(updatedList);
-//        diffResult.dispatchUpdatesTo(this);
-//    }
 
     public void updateList(ArrayList<OperationItem> updateOperationItemsList) {
         DiffUtil.Callback diffCallback = new OperationItemDiffCallback(operationItemsList, updateOperationItemsList);
@@ -61,13 +46,13 @@ public class CollectionsDataAdapter extends RecyclerView.Adapter<CollectionsData
 
     @NonNull
     @Override
-    public CollectionsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MapViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.data_item, parent, false);
-        return new CollectionsViewHolder(view);
+        return new MapViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CollectionsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MapViewHolder holder, int position) {
         OperationItem operationItem = operationItemsList.get(position);
         holder.titleTv.setText(operationItem.title);
         if (operationItem.statusReady == OperationStatus.NOT_READY) {
@@ -83,12 +68,12 @@ public class CollectionsDataAdapter extends RecyclerView.Adapter<CollectionsData
         return operationItemsList.size();
     }
 
-    public static class CollectionsViewHolder extends RecyclerView.ViewHolder {
+    public class MapViewHolder extends RecyclerView.ViewHolder {
         TextView titleTv;
         TextView timeTv;
         ProgressBar itemPb;
 
-        public CollectionsViewHolder(@NonNull View itemView) {
+        public MapViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTv = itemView.findViewById(R.id.tv_title);
             timeTv = itemView.findViewById(R.id.tv_time);

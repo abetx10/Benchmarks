@@ -9,37 +9,41 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-        <string-array name="collection_operation_titles">
-            <item>Adding in the beginning\nArrayList</item>
-            <item>Adding in the beginning\nLinkedList</item>
-            <item>Adding in the beginning\nCopyOnWriteArrayList</item>
-            <item>Adding in the middle\nArrayList</item>
-            <item>Adding in the middle\nLinkedList</item>
-            <item>Adding in the middle\nCopyOnWriteArrayList</item>
-            <item>Adding in the end\nArrayList</item>
-            <item>Adding in the end\nLinkedList</item>
-            <item>Adding in the end\nCopyOnWriteArrayList</item>
-            <item>Removing in the beginning\nArrayList</item>
-            <item>Removing in the beginning\nLinkedList</item>
-            <item>Removing in the beginning\nCopyOnWriteArrayList</item>
-            <item>Removing in the middle\nArrayList</item>
-            <item>Removing in the middle\nLinkedList</item>
-            <item>Removing in the middle\nCopyOnWriteArrayList</item>
-            <item>Removing in the end\nArrayList</item>
-            <item>Removing in the end\nLinkedList</item>
-            <item>Removing in the end\nCopyOnWriteArrayList</item>
-            <item>Search by value\nArrayList</item>
-            <item>Search by value\nLinkedList</item>
-            <item>Search by value\nCopyOnWriteArrayList</item>
-        </string-array>
+    <string-array name="collection_operation_titles">
+        <item>Adding in the beginning\nArrayList</item>
+        <item>Adding in the beginning\nLinkedList</item>
+        <item>Adding in the beginning\nCopyOnWriteArrayList</item>
+        <item>Adding in the middle\nArrayList</item>
+        <item>Adding in the middle\nLinkedList</item>
+        <item>Adding in the middle\nCopyOnWriteArrayList</item>
+        <item>Adding in the end\nArrayList</item>
+        <item>Adding in the end\nLinkedList</item>
+        <item>Adding in the end\nCopyOnWriteArrayList</item>
+        <item>Removing in the beginning\nArrayList</item>
+        <item>Removing in the beginning\nLinkedList</item>
+        <item>Removing in the beginning\nCopyOnWriteArrayList</item>
+        <item>Removing in the middle\nArrayList</item>
+        <item>Removing in the middle\nLinkedList</item>
+        <item>Removing in the middle\nCopyOnWriteArrayList</item>
+        <item>Removing in the end\nArrayList</item>
+        <item>Removing in the end\nLinkedList</item>
+        <item>Removing in the end\nCopyOnWriteArrayList</item>
+        <item>Search by value\nArrayList</item>
+        <item>Search by value\nLinkedList</item>
+        <item>Search by value\nCopyOnWriteArrayList</item>
+    </string-array>
+
+    <string-array name="maps_operation_titles">
+        <item>Adding new\nTreeMap</item>
+        <item>Adding new\nHashMap</item>
+        <item>Search by key\nTreeMap</item>
+        <item>Search by key\nHashMap</item>
+        <item>Removing\nTreeMap</item>
+        <item>Removing\nHashMap</item>
+    </string-array>
 
     <string name="state_progress">progress</string>
     <string name="state_ready">ready</string>
-
-    <string name="first_type">ArrayList</string>
-    <string name="second_type">LinkedList</string>
-    <string name="third_type">CopyOnWrite</string>
 
 </resources>

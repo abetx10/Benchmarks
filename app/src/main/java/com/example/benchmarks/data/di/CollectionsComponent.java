@@ -1,4 +1,5 @@
 package com.example.benchmarks.data.di;
+
 import com.example.benchmarks.presentation.CollectionsViewModel;
 
 import dagger.Component;

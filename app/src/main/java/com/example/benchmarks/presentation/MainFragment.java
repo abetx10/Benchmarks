@@ -1,19 +1,17 @@
 package com.example.benchmarks.presentation;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.example.benchmarks.R;
+import com.example.benchmarks.presentation.adapter.FragmentAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import com.example.benchmarks.presentation.adapter.FragmentAdapter;
-
 
 public class MainFragment extends Fragment {
     ViewPager2 mViewPager;
@@ -40,9 +38,9 @@ public class MainFragment extends Fragment {
     }
 
     public void tabSelectedListener() {
-        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab){
+            public void onTabSelected(TabLayout.Tab tab) {
                 tabPosition = tab.getPosition();
             }
 

@@ -5,8 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-import com.example.benchmarks.presentation.StartFragment;
+
 import com.example.benchmarks.R;
+import com.example.benchmarks.presentation.StartFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class FragmentAdapter extends FragmentStateAdapter {
@@ -19,7 +20,7 @@ public class FragmentAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-            return new StartFragment();
+        return new StartFragment();
     }
 
     @Override

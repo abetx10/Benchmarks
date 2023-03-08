@@ -1,17 +1,16 @@
 package com.example.benchmarks.presentation;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.benchmarks.R;
 import com.google.android.material.tabs.TabLayout;
@@ -46,12 +45,12 @@ public class StartFragment extends Fragment implements View.OnClickListener {
             Fragment fragment = new CollectionsFragment();
             goFromStartToSecondFragment(fragment);
         } else {
-            Fragment fragment = new MapsTableFragment();
+            Fragment fragment = new MapsFragment();
             goFromStartToSecondFragment(fragment);
         }
     }
 
-    public void goFromStartToSecondFragment(Fragment fragment){
+    public void goFromStartToSecondFragment(Fragment fragment) {
         String input = mCollectionSizeEd.getText().toString();
         if (input.matches("[0-9]+")) {
             Bundle args = new Bundle();
