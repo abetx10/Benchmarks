@@ -23,7 +23,7 @@ public class OperationMaps {
         });
     }
 
-    private void execute() {
+    public void execute() {
         switch (operationType) {
             case ADD_NEW:
                 map.put(KEY, VALUE);

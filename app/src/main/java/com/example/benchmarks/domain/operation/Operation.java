@@ -26,7 +26,7 @@ public class Operation {
     }
 
     public void execute() {
-        Log.d("Operation", "Executing operation on thread " + Thread.currentThread().getName());
+//        Log.d("Operation", "Executing operation on thread " + Thread.currentThread().getName());
         switch (operationType) {
             case ADD_START:
                 if (list instanceof LinkedList) {
